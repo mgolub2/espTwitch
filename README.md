@@ -8,4 +8,4 @@ Univeristy of Washington
 ##Requires:
 * pytwitcherapi
 * Flask
-Tested on Python 3, should work on Python 2.
+* Tested on Python 3, should work on Python 2.

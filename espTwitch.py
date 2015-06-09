@@ -93,7 +93,10 @@ def move():
     Grab the top of the directio_queue and return it. The esp8266
     will call this method every so often to get the next movement 
     direction
+    
+    This should probably only be a post request since it changes the server state...
     """
+    global last_direction
     try:
         last_direction = direction_queue.get_nowait()
         return "~"+str(last_direction)+"~"

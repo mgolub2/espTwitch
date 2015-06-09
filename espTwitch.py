@@ -20,6 +20,8 @@ BACKWARD = 1
 COAST = 0
 direction_queue = queue.Queue()
 
+last_direction = COAST
+
 class IRCClient(pytwitcherapi.IRCClient):
     """
     Send both public and private messages from the twitch irc 
@@ -93,9 +95,10 @@ def move():
     direction
     """
     try:
-        return str(direction_queue.get_nowait())
+        last_direction = direction_queue.get_nowait()
+        return "~"+str(last_direction)+"~"
     except queue.Empty:
-        return str(COAST)
+        return "~"+str(last_direction)+"~"
     except Exception as e:
         print(e)
 
